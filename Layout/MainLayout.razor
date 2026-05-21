@@ -1,0 +1,76 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager oNav
+
+<MudThemeProvider IsDarkMode="true" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    @* AppBar dengan efek Glassmorphism *@
+    <MudAppBar Elevation="0">
+        <MudText Typo="Typo.h5" Class="font-weight-bold">
+            <span style="color:var(--mud-palette-primary);">Chelsea</span>Indra
+        </MudText>
+        <MudSpacer />
+
+        @* Navigasi dengan Hover Effect *@
+        <div class="d-none d-md-flex">
+            <MudButton Variant="Variant.Text" Class="mx-2 nav-button" Href="#home">Home</MudButton>
+            <MudButton Variant="Variant.Text" Class="mx-2 nav-button" Href="#projects">Projects</MudButton>
+            <MudButton Variant="Variant.Text" Class="mx-2 nav-button" Href="#skills">Skills</MudButton>
+            <MudButton Variant="Variant.Text" Class="mx-2 nav-button" Href="#certificates">Sertificates</MudButton>
+        </div>
+    </MudAppBar>
+
+    <MudMainContent Class="pb-16">
+        <MudContainer MaxWidth="MaxWidth.Large" Class="mt-12">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+<style>
+    :root {
+        /* Palet: Nordic Mint & Slate (Cerah tapi Adem) */
+        --primary-brand: #2dd4bf; /* Teal/Mint yang segar */
+        --secondary-brand: #0ea5e9; /* Soft Sky Blue */
+        --text-main: #334155; /* Slate 700 (Lebih adem dari Hitam) */
+        --text-muted: #64748b; /* Slate 500 */
+        --bg-light: #f8fafc; /* Off-White kebiruan tipis */
+        --glass-bg: rgba(248, 250, 252, 0.85);
+    }
+
+    body {
+        background-color: var(--bg-light);
+        /* Pola grid sangat tipis agar elegan */
+        background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+        background-size: 32px 32px;
+        color: var(--text-main);
+    }
+
+    .nav-button {
+        text-transform: capitalize;
+        font-weight: 600;
+        color: var(--text-main) !important;
+        transition: all 0.3s;
+    }
+
+        .nav-button:hover {
+            color: var(--primary-brand) !important;
+            background-color: rgba(45, 212, 191, 0.05);
+            transform: translateY(-1px);
+        }
+
+    .mud-appbar {
+        background-color: var(--glass-bg) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
+        color: var(--text-main) !important;
+    }
+</style>
+
+@code {
+    void buttonProjectOnClick()
+    {
+        oNav.NavigateTo("projects");
+    }
+}

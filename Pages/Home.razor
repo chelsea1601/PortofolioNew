@@ -1,0 +1,418 @@
+﻿@page "/"
+
+@* --- SECTION 1: HERO (HOME) --- *@
+<section id="home" class="hero-section">
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="d-flex align-center justify-center" Style="min-height: 100vh;">
+        <MudGrid Justify="Justify.Center" AlignItems="AlignItems.Center">
+            <MudItem xs="12" md="6" Class="animate__animated animate__fadeInLeft">
+                <MudText Typo="Typo.h5" Style="color: var(--primary-brand)" Class="mb-2 font-weight-bold tracking-widest">ANDROID & DESKTOP DEVELOPER</MudText>
+                <MudText Typo="Typo.h2" Class="font-weight-bold main-title">Hi, I'm <span class="text-gradient">Chelsea Indra Puntadewa</span></MudText>
+
+                <div class="d-flex flex-wrap gap-2 my-6">
+                    <MudChip T="string" Variant="Variant.Filled" Class="tech-chip">Flutter</MudChip>
+                    <MudChip T="string" Variant="Variant.Filled" Class="tech-chip">C# (WinForms, Blazor)</MudChip>
+                    <MudChip T="string" Variant="Variant.Filled" Class="tech-chip">Laravel</MudChip>
+                </div>
+
+                <MudText Typo="Typo.body1" Class="leading-relaxed" Style="max-width: 550px; font-size: 1.1rem; color: var(--text-muted);">
+                    I am a software developer with a primary interest in the Android and Desktop ecosystems. I enjoy transforming complex ideas into seamless, high-quality digital solutions.
+                </MudText>
+
+                <div class="d-flex gap-4 mt-10">
+                    <MudButton Variant="Variant.Filled" Style="background-color: var(--primary-brand); color: white;" Class="rounded-pill px-8 py-3 btn-hover-effect"
+                               Href="#projects">Lihat Portofolio</MudButton>
+                    <MudButton Variant="Variant.Outlined" Style="border-color: var(--primary-brand); color: var(--primary-brand);" Class="rounded-pill px-8 py-3 btn-hover-effect"
+                               Href="mailto:emailkamu@gmail.com">Hubungi Saya</MudButton>
+                </div>
+            </MudItem>
+
+            <MudItem xs="12" md="5" Class="d-flex justify-center animate__animated animate__fadeInRight">
+                <div class="photo-container">
+                    <div class="photo-outline"></div>
+                    <MudAvatar Style="height:380px; width:320px;" Elevation="25" Class="profile-avatar">
+                        <MudImage Src="images/fotoprofil.jpg" Style="object-fit: cover; width: 100%; height: 100%;" />
+                    </MudAvatar>
+                </div>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</section>
+
+@* --- SECTION 2: PROJECTS --- *@
+<section id="projects" class="py-20" style="background: #f1f5f9;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <div class="section-header mb-16 text-center">
+            <MudText Typo="Typo.h3" Class="font-weight-bold mb-2" Style="color: var(--text-main)">Featured Projects</MudText>
+            <div class="underline-center"></div>
+        </div>
+
+        <MudGrid Justify="Justify.Center">
+            @{
+                var projects = new[] {
+                        new { Title = "Aplikasi KFC", Desc = "Sistem manajemen transaksi dan data menu menggunakan framework Laravel.", Img = "images/project1.png", Link = "https://github.com/chelsea1601/Restaurant" },
+                        new { Title = "Weather App", Desc = "Aplikasi Cuaca real-time di mobile (Flutter) dengan integrasi OpenWeather API.", Img = "images/project2.png", Link = "https://github.com/chelsea1601/Weather_app" },
+                        new { Title = "Daerah Indonesia", Desc = "Web pencarian kode pos daerah Indonesia berbasis React.js dengan Fetch API.", Img = "images/project3.png", Link = "https://github.com/chelsea1601/daerah_indonesia" },
+                        new { Title = "LKS MART (Desktop)", Desc = "Manajemen transaksi harian dengan C# WinForms, Entity Framework, dan Charting.", Img = "images/project4.png", Link = "" },
+                        new { Title = "LKS MART (Android)", Desc = "Aplikasi Flutter untuk katalog produk, keranjang, dan ekspor laporan PDF.", Img = "images/project5.png", Link = "" },
+                        new { Title = "Claims System", Desc = "Aplikasi Untuk Monitoring Supplier, dengan Blazor, Laporan PDF, Charting", Img = "images/project6.png", Link = "https://103.77.78.90/claims-frontend" }
+                        };
+            }
+
+            @foreach (var p in projects)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Elevation="0" Class="project-card h-full">
+                        <div class="card-image-wrapper">
+                            <MudCardMedia Image="@p.Img" Height="220" Style="object-fit: cover;" />
+                            <div class="card-overlay">
+                                <MudButton Variant="Variant.Filled" Style="background: var(--primary-brand); color:white;" Size="Size.Small" Href="@p.Link" Target="_blank">Lihat Kode</MudButton>
+                            </div>
+                        </div>
+                        <MudCardContent Class="pa-6">
+                            <MudText Typo="Typo.h6" Class="font-weight-bold mb-2" Style="color: var(--text-main)">@p.Title</MudText>
+                            <MudText Typo="Typo.body2" Style="color: var(--text-muted); line-height: 1.6;">@p.Desc</MudText>
+                        </MudCardContent>
+                        <MudCardActions Class="px-6 pb-6 mt-auto">
+                            <MudButton Variant="Variant.Text" Style="color: var(--primary-brand)" StartIcon="@Icons.Material.Filled.Info">Detail</MudButton>
+                            <MudSpacer />
+                            @if (!string.IsNullOrEmpty(p.Link))
+                            {
+                                <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Style="color: var(--text-muted)" Href="@p.Link" Target="_blank" />
+                            }
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    </MudContainer>
+</section>
+
+@* --- SECTION 3: SKILLS --- *@
+<section id="skills" class="py-32 section-skills-bg">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <div class="text-center mb-20">
+            <MudText Typo="Typo.h3" Class="font-weight-bold mb-3" Style="color: var(--text-main)">Tech Stack</MudText>
+            <div class="underline-center mb-4"></div>
+            <MudText Typo="Typo.body1" Style="color: var(--text-muted);">Teknologi dan alat yang saya gunakan untuk membangun project.</MudText>
+        </div>
+
+        <div class="bento-grid">
+            @{
+                var skills = new[] {
+                        new { Name = "Flutter", Icon = "images/android.png", Color = "#02569B", Desc = "Mobile Apps" },
+                        new { Name = "Laravel", Icon = "images/Laravel.png", Color = "#FF2D20", Desc = "Web Systems" },
+                        new { Name = "C# WinForms", Icon = "images/c.png", Color = "#512BD4", Desc = "Desktop App" },
+                        new { Name = "React.js", Icon = "images/react.png", Color = "#0891b2", Desc = "Frontend" },
+                        new { Name = "PostgreSQL", Icon = "images/PostgresSQL.png", Color = "#336791", Desc = "Database" },
+                        new { Name = "GitHub", Icon = "images/GitHub.png", Color = "#334155", Desc = "Version Control" },
+                        new { Name = "Blazor", Icon = "images/blazor.svg", Color = "#334155", Desc = "Hybrid Framework" }
+                        };
+            }
+
+            @foreach (var skill in skills)
+            {
+                <div class="bento-item">
+                    <div class="bento-content">
+                        <div class="icon-box-modern" style="background: rgba(45, 212, 191, 0.1);">
+                            <img src="@skill.Icon" alt="@skill.Name" style="width: 35px; height: 35px; object-fit: contain;" />
+                        </div>
+                        <div class="text-content">
+                            <MudText Typo="Typo.body1" Class="font-weight-bold" Style="color: var(--text-main)">@skill.Name</MudText>
+                            <MudText Typo="Typo.caption" Style="color: var(--text-muted);">@skill.Desc</MudText>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </MudContainer>
+</section>
+
+@* --- SECTION 3: CERTIFICATES --- *@
+<section id="certificates" class="py-32" style="background: var(--bg-light); border-top: 1px solid #e2e8f0;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <div class="section-header mb-20 text-center">
+            <MudText Typo="Typo.h3" Class="font-weight-bold mb-2" Style="color: var(--text-main)">My Certifications</MudText>
+            <div class="underline-center"></div>
+        </div>
+
+        <MudGrid Justify="Justify.Center">
+            @* Sertifikat 1 *@
+            <MudItem xs="12" sm="6" md="4">
+                <MudCard Elevation="0" Class="cert-card h-full">
+                    <div class="cert-img-container">
+                        <MudCardMedia Image="images/serti1.png" Height="200" />
+                    </div>
+                    <MudCardContent>
+                        <MudText Typo="Typo.subtitle1" Class="font-weight-bold" Style="color: var(--text-main)">JavaScript Dasar</MudText>
+                        <MudText Typo="Typo.caption" Style="color: var(--text-muted)">Dicoding Indonesia • 2026</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+
+            @* Sertifikat 2 *@
+            <MudItem xs="12" sm="6" md="4">
+                <MudCard Elevation="0" Class="cert-card h-full">
+                    <div class="cert-img-container">
+                        <MudCardMedia Image="images/serti2.png" Height="200" />
+                    </div>
+                    <MudCardContent>
+                        <MudText Typo="Typo.subtitle1" Class="font-weight-bold" Style="color: var(--text-main)">Belajar Dasar Pemrograman Web</MudText>
+                        <MudText Typo="Typo.caption" Style="color: var(--text-muted)">Dicoding Indonesia • 2026</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+
+            @* Sertifikat 3 *@
+            <MudItem xs="12" sm="6" md="4">
+                <MudCard Elevation="0" Class="cert-card h-full">
+                    <div class="cert-img-container">
+                        <MudCardMedia Image="images/serti3.png" Height="200" />
+                    </div>
+                    <MudCardContent>
+                        <MudText Typo="Typo.subtitle1" Class="font-weight-bold" Style="color: var(--text-main)">Keselamatan Dalam Bekerja</MudText>
+                        <MudText Typo="Typo.caption" Style="color: var(--text-muted)">K3LH • 2024</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</section>
+
+@* --- SECTION 4: FOOTER --- *@
+<footer class="footer-section">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" Class="text-center mb-8">
+                <MudText Typo="Typo.h4" Class="font-weight-bold mb-4" Style="color: var(--text-main)">Let's Work Together</MudText>
+                <div class="d-flex justify-center gap-6 mt-6">
+                    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Variant="Variant.Filled" Class="social-icon-btn github" Href="https://github.com/chelsea1601" Target="_blank" />
+                    <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Variant="Variant.Filled" Class="social-icon-btn linkedin" Href="https://www.linkedin.com/in/chelsea-indra-puntadewa-2b54a1382/" target="_blank" />
+                    <MudIconButton Icon="@Icons.Custom.Brands.Instagram" Variant="Variant.Filled" Class="social-icon-btn instagram" Href="https://www.instagram.com/__celsii/" target="_blank"/>
+                    <MudIconButton Icon="@Icons.Material.Filled.Email" Variant="Variant.Filled" Class="social-icon-btn email" Href="mailto:chelsea.indrap@gmail.com?subject=Hello Chelsea! - Inquiry from Portfolio" target="_blank" />
+                </div>
+            </MudItem>
+            <MudItem xs="12" Class="text-center mt-12 pt-8" Style="border-top: 1px solid #e2e8f0;">
+                <MudText Typo="Typo.body2" Style="color: var(--text-muted)">
+                    &copy; 2026 Chelsea Indra Puntadewa. All Rights Reserved.
+                </MudText>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</footer>
+
+@* Sidebar *@
+<div class="social-sidebar-v2 d-none d-md-flex">
+    <a href="https://github.com/chelsea1601" target="_blank"><MudIcon Icon="@Icons.Custom.Brands.GitHub" /></a>
+    <a href="https://www.linkedin.com/in/chelsea-indra-puntadewa-2b54a1382/" target="_blank"><MudIcon Icon="@Icons.Custom.Brands.LinkedIn" /></a>
+    <a href="https://www.instagram.com/__celsii/" target="_blank"><MudIcon Icon="@Icons.Custom.Brands.Instagram" /></a>
+    <div class="vertical-line"></div>
+</div>
+
+<style>
+    /* Hero Styling */
+    .hero-section {
+        background: radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.05) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+    }
+
+    .main-title {
+        font-size: 3.5rem !important;
+        line-height: 1.2;
+        color: var(--text-main);
+    }
+
+    .text-gradient {
+        background: linear-gradient(90deg, var(--primary-brand) 0%, var(--secondary-brand) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .tech-chip {
+        background-color: white !important;
+        border: 1px solid #e2e8f0 !important;
+        color: var(--text-muted) !important;
+        transition: 0.3s;
+    }
+
+        .tech-chip:hover {
+            border-color: var(--primary-brand) !important;
+            color: var(--primary-brand) !important;
+            background-color: rgba(45, 212, 191, 0.05) !important;
+        }
+
+    /* Photo Frame */
+    .photo-container {
+        position: relative;
+        padding: 20px;
+    }
+
+    .photo-outline {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--primary-brand);
+        border-radius: 16px;
+        opacity: 0.2;
+    }
+
+    .profile-avatar {
+        border-radius: 16px !important;
+        transition: 0.5s ease;
+    }
+
+    .photo-container:hover .profile-avatar {
+        transform: translate(-10px, -10px);
+    }
+
+    /* Project Cards (Cerah & Bersih) */
+    .project-card {
+        background: white !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 20px !important;
+        /* Hanya animasikan properti yang memang berubah */
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s ease;
+        will-change: transform; /* Memberitahu browser untuk optimasi GPU */
+    }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: var(--primary-brand) !important;
+        }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .card-image-wrapper:hover .card-overlay {
+        opacity: 1;
+    }
+
+    /* Bento Skills */
+    .section-skills-bg {
+        background-color: #ffffff !important;
+    }
+
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .bento-item {
+        background: white;
+        border: 1px solid #f1f5f9;
+        border-radius: 12px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+        .bento-item:hover .icon-box-modern {
+            transform: scale(1.1);
+            background: #ffffff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+    .icon-box-modern {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: #f8fafc; /* Warna background netral */
+        border: 1px solid #f1f5f9;
+        transition: transform 0.3s ease;
+    }
+
+    /* Certifications */
+    .cert-card {
+        background: white !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    /* Footer & Socials */
+    .footer-section {
+        background: #f8fafc;
+        padding: 80px 0 40px 0;
+    }
+
+    .social-icon-btn {
+        background: white !important;
+        color: var(--text-muted) !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;
+    }
+
+        .social-icon-btn:hover {
+            color: white !important;
+            transform: scale(1.1);
+        }
+
+    .github:hover {
+        background: #333 !important;
+    }
+
+    .linkedin:hover {
+        background: #0077b5 !important;
+    }
+
+    .instagram:hover {
+        background: #e4405f !important;
+    }
+
+    .email:hover {
+        background: var(--primary-brand) !important;
+    }
+
+    /* Sidebar */
+    .social-sidebar-v2 {
+        position: fixed;
+        bottom: 0;
+        left: 40px;
+        z-index: 99;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+        .social-sidebar-v2 a {
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+            .social-sidebar-v2 a:hover {
+                color: var(--primary-brand);
+                transform: translateY(-3px);
+            }
+
+    .vertical-line {
+        width: 1px;
+        height: 100px;
+        background: #cbd5e1;
+        margin: 0 auto;
+    }
+
+    /* Utils */
+    .underline-center {
+        width: 50px;
+        height: 4px;
+        background: var(--primary-brand);
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+
+    .py-32 {
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+    }
+</style>
